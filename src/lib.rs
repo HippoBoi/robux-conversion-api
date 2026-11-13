@@ -7,7 +7,7 @@ use worker::*;
 #[derive(Deserialize, Serialize)]
 struct ExternalRatesResponse {
     result: String,
-    time_last_update: String,
+    time_last_update_utc: String,
     rates: HashMap<String, f64>,
 }
 
@@ -84,7 +84,7 @@ pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Respo
                     "devex_payout_usd": 0.0035
                 },
                 "fiat_rates": filtered_rates,
-                "updated_at": rates_data.time_last_update
+                "updated_at": rates_data.time_last_update_utc
             }))
         })
         .get("/rate", |_, _| Response::from_json(&rate_payload()))
