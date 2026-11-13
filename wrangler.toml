@@ -4,3 +4,10 @@ compatibility_date = "2025-01-01"
 
 [build]
 command = "cargo install -q \"worker-build@^0.8\" && worker-build --release"
+
+[[kv_namespaces]]
+binding = "FX_RATES"
+id = "9f9ce5a01407476a87a08d1dc4f33cbb"
+
+[triggers]
+crons = ["0 */6 * * *"]
